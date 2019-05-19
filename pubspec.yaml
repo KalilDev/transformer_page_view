@@ -1,6 +1,6 @@
 name: transformer_page_view
 description: PageTransformer for flutter
-version: 0.1.6
+version: 0.1.7
 author: JZoom <jzoom8112@gmail.com>
 homepage:  https://github.com/jzoom/transformer_page_view
 
@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  cached_network_image: ^0.8.0
 
 dev_dependencies:
   flutter_test:

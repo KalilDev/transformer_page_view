@@ -1,5 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:transformer_page_view/transformer_page_view.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'dart:typed_data';
 
 typedef void PaintCallback(Canvas canvas, Size siz);
 
@@ -126,12 +128,44 @@ class ParallaxContainer extends StatelessWidget {
 }
 
 class ParallaxImage extends StatelessWidget {
-  final Image image;
+  final Widget image;
   final double imageFactor;
 
-  ParallaxImage.asset(String name, {double position, this.imageFactor: 0.3})
-      : assert(imageFactor != null),
+  ParallaxImage.asset(String name, {@required double position, this.imageFactor: 0.3})
+      : assert(imageFactor != null && position != null),
         image = Image.asset(name,
+            fit: BoxFit.cover,
+            alignment: FractionalOffset(
+              0.5 + position * imageFactor,
+              0.5,
+            ));
+  
+  ParallaxImage.cachedNetwork(String url, {@required double position, this.imageFactor: 0.3, PlaceholderWidgetBuilder placeholder, LoadingErrorWidgetBuilder errorWidget, Map<String, String> httpHeaders})
+      : assert(imageFactor != null && position != null),
+        image = CachedNetworkImage(
+            imageUrl: name,
+            placeholder: placeholder,
+            errorWidget: errorWidget,
+            httpHeaders: httpHeaders,
+            fit: BoxFit.cover,
+            alignment: FractionalOffset(
+              0.5 + position * imageFactor,
+              0.5,
+            ));
+  
+  ParallaxImage.network(String url, {@required double position, this.imageFactor: 0.3, Map<String, String> httpHeaders})
+      : assert(imageFactor != null && position != null),
+        image = Image.network(url,
+            headers: httpHeaders,
+            fit: BoxFit.cover,
+            alignment: FractionalOffset(
+              0.5 + position * imageFactor,
+              0.5,
+            ));
+  
+  ParallaxImage.memory(Uint8List bytes, {@required double position, this.imageFactor: 0.3})
+      : assert(imageFactor != null && position != null),
+        image = Image.memory(bytes,
             fit: BoxFit.cover,
             alignment: FractionalOffset(
               0.5 + position * imageFactor,

@@ -1,3 +1,8 @@
+## [0.1.7] - [2019.05.19]
+
+    * Fix widget not honoring viewportFraction
+    * Add frequently used constructors for ParallaxImage
+
 ## [0.1.6] - [2019.03.22]
 
     * Fix setState() called after dispose()

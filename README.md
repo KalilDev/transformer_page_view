@@ -86,10 +86,16 @@ Almost the same as PageView.builder, simplely specify a `transformer` to `Transf
 
 ## Getting Started
 
-- [Installation](#installation)
-- [Basic Usage](#basic-usage)
-- [Build-in Parallax](#build-in-parallax)
-- [Custom animation](#custom-animation)
+- [transformer_page_view](#transformerpageview)
+  - [Very simple to use](#very-simple-to-use)
+  - [Show cases](#show-cases)
+    - [Parallax](#parallax)
+    - [Basic](#basic)
+  - [Getting Started](#getting-started)
+    - [Installation](#installation)
+    - [Basic Usage](#basic-usage)
+    - [Build-in Parallax](#build-in-parallax)
+    - [Custom animation](#custom-animation)
 
 
 ### Installation
@@ -135,6 +141,13 @@ ParallaxColor handles the color transform, which controls the color transform fr
 > ParallaxImage
 
 ParallaxImage handles the image, which speed is slower than the `PageView`
+
+| Layout  | Support version   | 
+| :------------ |:---------------:|
+| ParallaxImage.asset | From 0.0.1 |
+| ParallaxImage.cachedNetwork | From 0.1.7 |
+| ParallaxImage.network | From 0.1.7 |
+| ParallaxImage.memory | From 0.1.7 |
 
 > ParallaxContainer
 
