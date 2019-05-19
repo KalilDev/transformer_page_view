@@ -143,7 +143,7 @@ class ParallaxImage extends StatelessWidget {
   ParallaxImage.cachedNetwork(String url, {@required double position, this.imageFactor: 0.3, PlaceholderWidgetBuilder placeholder, LoadingErrorWidgetBuilder errorWidget, Map<String, String> httpHeaders})
       : assert(imageFactor != null && position != null),
         image = CachedNetworkImage(
-            imageUrl: name,
+            imageUrl: url,
             placeholder: placeholder,
             errorWidget: errorWidget,
             httpHeaders: httpHeaders,

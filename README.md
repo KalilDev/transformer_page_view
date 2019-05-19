@@ -63,7 +63,7 @@ Almost the same as PageView.builder, simplely specify a `transformer` to `Transf
 
 ![ScaleAndFadeTransformer](https://github.com/jzoom/images/raw/master/ScaleAndFadeTransformer.gif)
 
->See code [here](https://github.com/best-flutter/transformer_page_view/blob/master/example/lib/ScaleAndFadeTransformers.dart)
+>See code [here](https://github.com/best-flutter/transformer_page_view/blob/master/example/lib/ScaleAndFadeTransformer.dart)
 
 
 ![ZoomInPageTransformer](https://github.com/jzoom/images/raw/master/ZoomInPageTransformer.gif)
@@ -78,7 +78,7 @@ Almost the same as PageView.builder, simplely specify a `transformer` to `Transf
 
 ![DepthPageTransformer](https://github.com/jzoom/images/raw/master/DepthPageTransformer.gif)
 
->See code [here](https://github.com/best-flutter/transformer_page_view/blob/master/example/lib/DepthPageTransformers.dart)
+>See code [here](https://github.com/best-flutter/transformer_page_view/blob/master/example/lib/DeepthPageTransformer.dart)
 
 
 
