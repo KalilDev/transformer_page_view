@@ -106,21 +106,25 @@ class ParallaxContainer extends StatelessWidget {
   final double position;
   final double translationFactor;
   final double opacityFactor;
+  final Axis axis;
 
   ParallaxContainer(
       {@required this.child,
       @required this.position,
       this.translationFactor: 100.0,
-      this.opacityFactor: 1.0})
+      this.opacityFactor: 1.0,
+      this.axis: Axis.horizontal})
       : assert(position != null),
         assert(translationFactor != null);
 
   @override
   Widget build(BuildContext context) {
+    final translation = position * translationFactor;
     return Opacity(
       opacity: (1 - position.abs()).clamp(0.0, 1.0) * opacityFactor,
       child: new Transform.translate(
-        offset: new Offset(position * translationFactor, 0.0),
+        offset: new Offset(axis == Axis.horizontal ? translation : 0.0,
+            axis == Axis.vertical ? translation : 0.0),
         child: child,
       ),
     );
@@ -131,16 +135,25 @@ class ParallaxImage extends StatelessWidget {
   final Widget image;
   final double imageFactor;
 
-  ParallaxImage.asset(String name, {@required double position, this.imageFactor: 0.3})
+  ParallaxImage.asset(String name,
+      {@required double position,
+      this.imageFactor: 0.3,
+      Axis axis = Axis.horizontal})
       : assert(imageFactor != null && position != null),
         image = Image.asset(name,
             fit: BoxFit.cover,
             alignment: FractionalOffset(
-              0.5 + position * imageFactor,
-              0.5,
+              axis == Axis.horizontal ? 0.5 + position * imageFactor : 0.5,
+              axis == Axis.vertical   ? 0.5 + position * imageFactor : 0.5,
             ));
-  
-  ParallaxImage.cachedNetwork(String url, {@required double position, this.imageFactor: 0.3, PlaceholderWidgetBuilder placeholder, LoadingErrorWidgetBuilder errorWidget, Map<String, String> httpHeaders})
+
+  ParallaxImage.cachedNetwork(String url,
+      {@required double position,
+      this.imageFactor: 0.3,
+      PlaceholderWidgetBuilder placeholder,
+      LoadingErrorWidgetBuilder errorWidget,
+      Map<String, String> httpHeaders,
+      Axis axis = Axis.horizontal})
       : assert(imageFactor != null && position != null),
         image = CachedNetworkImage(
             imageUrl: url,
@@ -149,27 +162,34 @@ class ParallaxImage extends StatelessWidget {
             httpHeaders: httpHeaders,
             fit: BoxFit.cover,
             alignment: FractionalOffset(
-              0.5 + position * imageFactor,
-              0.5,
+              axis == Axis.horizontal ? 0.5 + position * imageFactor : 0.5,
+              axis == Axis.vertical   ? 0.5 + position * imageFactor : 0.5,
             ));
-  
-  ParallaxImage.network(String url, {@required double position, this.imageFactor: 0.3, Map<String, String> httpHeaders})
+
+  ParallaxImage.network(String url,
+      {@required double position,
+      this.imageFactor: 0.3,
+      Map<String, String> httpHeaders,
+      Axis axis = Axis.horizontal})
       : assert(imageFactor != null && position != null),
         image = Image.network(url,
             headers: httpHeaders,
             fit: BoxFit.cover,
             alignment: FractionalOffset(
-              0.5 + position * imageFactor,
-              0.5,
+              axis == Axis.horizontal ? 0.5 + position * imageFactor : 0.5,
+              axis == Axis.vertical   ? 0.5 + position * imageFactor : 0.5,
             ));
-  
-  ParallaxImage.memory(Uint8List bytes, {@required double position, this.imageFactor: 0.3})
+
+  ParallaxImage.memory(Uint8List bytes,
+      {@required double position,
+      this.imageFactor: 0.3,
+      Axis axis = Axis.horizontal})
       : assert(imageFactor != null && position != null),
         image = Image.memory(bytes,
             fit: BoxFit.cover,
             alignment: FractionalOffset(
-              0.5 + position * imageFactor,
-              0.5,
+              axis == Axis.horizontal ? 0.5 + position * imageFactor : 0.5,
+              axis == Axis.vertical   ? 0.5 + position * imageFactor : 0.5,
             ));
 
   @override

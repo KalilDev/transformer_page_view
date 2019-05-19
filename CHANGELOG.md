@@ -1,3 +1,7 @@
+## [0.1.8] - [2019.05.19]
+
+    * Allow changing axis on Parallax container and image
+
 ## [0.1.7] - [2019.05.19]
 
     * Fix widget not honoring viewportFraction
