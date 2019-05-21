@@ -110,23 +110,25 @@ class ParallaxContainer extends StatelessWidget {
 
   ParallaxContainer(
       {@required this.child,
-      @required this.position,
-      this.translationFactor: 100.0,
-      this.opacityFactor: 1.0,
-      this.axis: Axis.horizontal})
+        @required this.position,
+        this.translationFactor: 100.0,
+        this.opacityFactor: 1.0,
+        this.axis: Axis.horizontal})
       : assert(position != null),
         assert(translationFactor != null);
 
   @override
   Widget build(BuildContext context) {
     final translation = position * translationFactor;
-    return Opacity(
-      opacity: (1 - position.abs()).clamp(0.0, 1.0) * opacityFactor,
-      child: new Transform.translate(
-        offset: new Offset(axis == Axis.horizontal ? translation : 0.0,
-            axis == Axis.vertical ? translation : 0.0),
-        child: child,
-      ),
+    final opacity = (1 - position.abs()).clamp(0.0, 1.0) * opacityFactor;
+    return Transform.translate(
+      offset: new Offset(axis == Axis.horizontal ? translation : 0.0,
+          axis == Axis.vertical ? translation : 0.0),
+      child: !(opacity >= 0.0 && opacity <= 1.0)
+          ? SizedBox()
+          : Opacity(
+          opacity: opacity,
+          child: child),
     );
   }
 }
